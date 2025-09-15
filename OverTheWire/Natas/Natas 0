@@ -1,1 +1,9 @@
-Jumping right In to the first level and after logging in, I'm greeted by a page that looks like this 
+Jumping right In to the first level and after logging in, I'm greeted by a very basic looking page with a box in the middle. Inside the box is the text "You can find the password for the next level on this page."
+
+My first thought when I do in webpage analysis is always to check the page source and Inspect element to check for easy clues that might've been left there.
+
+In the inspection panel, we have the basic html code for the page laid out, as i'd expect. 
+Digging in to the codes header section revals the text "<!-- This stuff in the header has nothing to do with the level -->". Fair enough, moving on.
+In the body section, we see more commented out text that says "<!--The password for natas1 is 0nzCigAq7t2iALyvU9xcHlYN4MlkIwlq -->"
+
+Easy enough for the first level. I get the sense that this is going to be a fun game.
