@@ -1,1 +1,9 @@
-Now we're on to level 1 (technically 2)
+Now we're on to level 1 (technically 2) and after getting logged in, i'm presented with basically the same page as before. This one, however, has the text "You can find the password for the next level on this page, but rightclicking has been blocked!"
+
+Indeed, when I go to right click to open the developer panel, It presents me with a popup telling me that right clicking has been blocked. 
+No worries though, I'll just use the keyboard shortcut to open up the inspect element. For me this is CTRL + SHIFT + C.
+Doing this pops the panel out and all I have to do is find the same section as before. 
+"<!--The password for natas2 is TguMNxKo1DSa1tujBLuZJnDUlCcUAPlI -->"
+
+Like before, not too dificult, but I can definitely see that the solutions to these problems are going to start getting more technical as we go on (as per usual with OTW)
+Onto level 2
