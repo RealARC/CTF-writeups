@@ -1,1 +1,33 @@
- 
+When we open up natas4, we're greeted with text thats a lot different from what we usually see. It says:
+
+  Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/"
+
+And below it is a small refresh page button. when I press the refresh button the text changes to say:
+
+  Access disallowed. You are visiting from "http://natas4.natas.labs.overthewire.org/" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/"
+
+Interesting change, lets try refreshing again.
+
+  Access disallowed. You are visiting from "http://natas4.natas.labs.overthewire.org/index.php" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/"
+
+After this, hitting the refresh button does nothing to change the page.
+This is definitely unlike something that you'd usually expect to see. One thing I notice immediately is that its always listing the previous address of the page we were just on. 
+So this begs two questions: One, how does it know where were coming from, and Two, how do we make it look like were coming from "http://natas5.natas.labs.overthewire.org/"?
+
+At this point I was at a little bit of a loss. I go through the developer tools and nothing really stands out to me initially, so now i'm on to plan-b.
+I'm not happy about it, but It's time to use the most powerful tool that I have at my disposal: the Internet.
+
+After googling a bit, I find out about the referer header. 
+The referer header is an optional http header which does pretty much exactly what you might expect, it tells the website where a request originated from (aka letting the server know where you came from.)
+
+Using my new-found knowledge of the referer header and http headers in general, All I have to do now is change the header.
+Theres many was to do this, you can use chrome extensions, a tool like burpsuite or zap, or you can even do it manually through the developer tools if you want.
+I elected to just try the chrome extension (cut me some slack I still have 30 more levels to get through).
+
+I downloaded the extension and plugged in my desired header (http://natas5.natas.labs.overthewire.org) and voila, we get the text
+
+Access granted. The password for natas5 is 0n35PkggAPm2zbEpOU802c0x0Msn1ToK 
+
+
+This level definitely also threw me for a loop, but I learned something new about how to use http to my advantage.
+Onto level 5.
