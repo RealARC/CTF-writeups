@@ -1,1 +1,42 @@
+On this page we're presented with the text "There is nothing on this page", and just like it says, when I navigate to the html section where I found the last two passwords, theres no commented out text giving it away. Darn.
 
+There is however, something else peculiar. 
+In the html, right after the text we see this 
+
+<img src="files/pixel.png">
+
+Huh, an image file? Just like its title says, its exactly one pixel large and basically invisible; no wonder I didnt see this sooner.
+
+My first thought when I saw the picture was to run analysis on it to see if they hid the password in the metadata or hex. 
+Unfortunately this analysis didnt provide me with anything useful; looks like I was barking up the wrong tree. A little annoying but it happens when you're doing this stuff
+
+After that I double back to the html and think of what else I can get from it. Thats when I notice something important. The source for the image is "files/pixel.png".
+
+You see, when we access a website, what we're really doing is requesting the page from a server somewhere. Most of the time, that server is going to contain more than just the webpage. It'll probably contain other webpages and content related to the website. It could also contain stuff thats not necessarily meant for the eyes of the public.
+The problem is that if you don't configure the website and webserver correctly, you might accidentally make it possible for people to navigate through the filesystem itself.
+
+This brings us back to the filepath. It tells us that there might be a directory on the webserver for the website called files, which we could possibly navigate to through the address bar.
+I add the /files/ to the end of the address and now it looks like this "http://natas2.natas.labs.overthewire.org/files/"
+
+After I hit enter i'm brought to an apache index page called "Index of /files"
+On this page theres three options that look something like this 
+
+Parent Directory	 	-	 
+[IMG]	pixel.png	2025-08-15 13:06	
+[TXT]	users.txt	2025-08-15 13:06	
+
+As we can see, theres our pixel image from before, as well as another file. This is a text file called users.txt (bingo)
+Opening up users.txt shows us this: 
+
+# username:password
+alice:BYNdCesZqW
+bob:jw2ueICLvT
+charlie:G5vCxkVV3m
+natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
+eve:zo4mJWyNj2
+mallory:9urtcpzBmH
+
+And there we have our next password. 
+This level definitely upped the ante, but I like a good challenge.
+
+onto level 3
