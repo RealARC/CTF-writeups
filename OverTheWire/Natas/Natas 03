@@ -1,1 +1,44 @@
- 
+After opening this page, we see the text "There is nothing on this page". Very reminiscent of last level. I notice at this point that they like to double up the levels and often make callbacks to the previous level like this. Fun.
+
+Going to our reliable body section of the html, we see the text: 
+
+<!-- No more information leaks!! Not even Google will find it this time... -->
+
+Looks like they're starting to tighten up the security a little; maybe they're getting tired of the hackers pwn-ing their website? 
+
+I start looking around the code some more, but that's not giving me anything.
+I try adding the "/files/" to the end again, still no luck.
+I try a couple other usual tricks thinking maybe one of those will get me somewhere, nope. 
+
+I have to admit that at this point I was a bit stumped. If not even google will be able to find this information, then what hope do I have of finding it? 
+Then I thought about it some more, why would they include that part about google? I'ts gotta mean something.
+I looked up how google finds information about websites and that when it hit me. 
+
+What I found was talking about webcrawlers and robots.txt files. 
+This is something I was vaguely familiar with since i've worked with web analysis tools like zap and burpsuite before, and both of those have webcrawling functions which often show me robots.txt files.
+A webcrawler (sometimes called a crawlerbot or just a crawler) is a bot thats used to systematically browse and index websites. Google uses them to improve their SEO and show more websites to people.
+A robots.txt file is a file thats often included in a webserver so that a person or webcrawler can have a list of the indexed sites, and also which sites should not be visited or indexed by the crawlers. 
+A sitemap also serves a similar purpose to a robots file. 
+
+With this knowledge, we can check and see if this site has a file like this, and if that file will give us anything important.
+I add the /robots.txt to the end of the path in my address bar, so now it looks like "http://natas3.natas.labs.overthewire.org/robots.txt"
+
+What pops up is a page with the text: 
+
+User-agent: *
+Disallow: /s3cr3t/
+
+This tells us that theres a directory on the server called s3cr3t.
+If we replace the /robots.txt/ with /s3cr3t/ (meaning that the new address looks like this "http://natas3.natas.labs.overthewire.org/s3cr3t/"), We are presented with another index page called Index of /s3cr3t. It looks something like this: 
+
+Name	Last modified	Size	Description
+[PARENTDIR]	Parent Directory	 	-	 
+[TXT]	users.txt	2025-08-15 13:06	40	 
+
+We enter the users.txt file and are presented with this: 
+
+natas4:QryZXc2e0zahULdHrtHxzyYkj59kUxLQ
+
+
+This level definitely threw me for a loop that I wasn't really expecting. I learned a bit of new information on how webpages are indexed, how webcrawlers work, and how NOT to keep pages hidden from google.
+I get the feeling i'm gonna be doing a lot more learning from here on out. Nevertheless, on to natas4.
