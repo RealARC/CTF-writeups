@@ -1,1 +1,23 @@
- 
+We open up Natas5 and we see the text 
+
+"Access disallowed. You are not logged in"
+
+Interesting. There doesn't appear to be anywhere to login. Looks like we're gonna have to figure out how to make it look like we're logged in.
+
+I'll start how I always start by opening up the developer tools (inspection element) and looking through to see if I can find anything helpful.
+Nothing in the pages source code, moving on.
+No unusual network traffic that I can see.
+In the cookies is where we can find our answer.
+
+Cookies are one of the ways that websites can store important information about a user and their session. Usually they store innocuous information that we wouldn't even think twice about. 
+However, sometimes they store things like user credintials or whether a user is logged in to a session. 
+Another important piece of information is that cookies are stored on the client side (your computer), and therefore you can manipulate the values. This can be especially valuable to bad actors if the information the cookie is storing isnt obfuscated.
+
+This brings us back to our session, where in the developer tools I found a cookie called "loggedin" with a value of zero. 
+Lets try changing this to a one and refreshing the page so it can take effect.
+When we refresh the page the text changes to:
+
+Access granted. The password for natas6 is 0RoJwHdSKWFTYR5WuiAewauSuNaBXned
+
+Easy enough, as far as challenges go i'd say this one was easier than the last one. Maybe they're just throwing us a bone lol.
+On to level 6
