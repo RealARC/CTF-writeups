@@ -1,1 +1,32 @@
- 
+When we open up natas6 we're greeted with text that says "input secret" next to a box for us to type in. Under that is a button that says "submit" and in the corner theres a hyperlink that says "view sourcecode".
+Well don't mind if I do, lets go check out this sourcecode.
+
+Looking at the code we see the usual header that has "nothing to do with the level", but in the body section we have something interesting. A body of php code that reads as follows: 
+
+include "includes/secret.inc";
+
+    if(array_key_exists("submit", $_POST)) {
+        if($secret == $_POST['secret']) {
+        print "Access granted. The password for natas7 is <censored>";
+    } else {
+        print "Wrong secret";
+    }
+    }
+
+Now given my propensity for basic code reverse engineering, this seems like something right up my alley. Let me break this down so we can understand whats going on here.
+The first line ( line 6 in this page) simply tells us the program to include a page at http://natas6.natas.labs.overthewire.org/includes/secret.inc into our proceeding code. Lets visit that address and see what else we can get here.
+
+<?
+$secret = "FOEIUWGHFEEUHOFUOIU";
+?>
+
+Great, now we have the secret password that gets ran through this code. Lets continue.
+The second part of this (lines 8-12) is an if statement that says, if something has been submitted, and that thing matches the secret password, it will print the password for the next level for us; Otherwise it will print "wrong secret".
+
+Well we already have the secret, lets go ahead and plug it in. 
+
+Access granted. The password for natas7 is bmg8SvU1LizuWjx3y7xkNERkHxGre0GS
+
+
+This one was pretty good. I like the conceot that it's teaching about code analysis.
+Onto level 7.
